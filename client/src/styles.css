@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('./background.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #5A3B00;
+}
+
+/* Container Utama */
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: rgba(255, 247, 214, 0.85); /* transparan lembut */
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(180, 140, 50, 0.2);
+}
+
+/* Judul */
+h1 {
+  color: #A55B00;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Form dan Input */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+textarea {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #FFD27F;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #FFF9E6;
+  color: #5A3B00;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #F26B1D;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Tombol */
+button,
+.tambah-btn {
+  background-color: #F26B1D;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+button:hover,
+.tambah-btn:hover {
+  background-color: #D95A12;
+}
+
+.remove-btn {
+  margin-left: 10px;
+  background-color: #FF5E5E;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Resep Card */
+.resep-card {
+  background-color: #FFFBEA;
+  border: 2px solid #FFEBB5;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  transition: transform 0.3s;
+}
+
+.resep-card {
+  background-color: #FFFBEA;
+  border: 2px solid #FFD27F;
+  border-radius: 16px;
+  padding: 20px 30px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(180, 140, 50, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.resep-card:hover {
+  transform: translateY(-4px);
+}
+
+.resep-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #A55B00;
+}
+
+.resep-card p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.resep-card .button-group {
+  margin-top: 15px;
+}
+
+.resep-card .button-group button {
+  margin-right: 10px;
+}
+
+/* Teks Resep */
+.recipe-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #A55B00;
+}
+
+.recipe-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: #5A3B00;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
+
+/* Kotak Pencarian */
+.search-box {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #FFD27F;
+  border-radius: 10px;
+  background-color: #FFF9E6;
+  font-size: 1rem;
+}
+
+/* Container Form dan List Dipisah */
+.form-container {
+  margin-bottom: 40px;
+  padding: 30px;
+  background-color: #FFFBEA;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(180, 140, 50, 0.1);
+}
+
+.list-container {
+  padding: 30px;
+  background-color: #FFFBEA;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(180, 140, 50, 0.1);
+}
+
+/* Heading pada Form dan List */
+.form-container h2,
+.list-container h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #A55B00;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #FFFBEA;
+  padding: 30px;
+  border-radius: 16px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
