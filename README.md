@@ -1,6 +1,6 @@
 ## Cara Menjalankan Website
 
-Untuk menjalankan web ini, Anda perlu membuka dua jendela terminal dan menjalankan perintah berikut secara terpisah:
+Untuk menjalankan web ini, perlu membuka dua jendela terminal dan menjalankan perintah berikut secara terpisah:
 
 ### Terminal 1: Backend (Express.js)
 
