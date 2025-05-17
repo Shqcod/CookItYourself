@@ -16,7 +16,7 @@ Untuk menjalankan web ini, perlu membuka dua jendela terminal dan menjalankan pe
     ```
 3.  Jalankan server backend:
     ```bash
-    node app.js
+    node server.js
     # atau perintah lain yang sesuai untuk menjalankan backend Anda
     ```
 
