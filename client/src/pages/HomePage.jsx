@@ -44,66 +44,68 @@ const HomePage = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container">
-      <div className="flex justify-between items-center mb-16">
-        <h1 className="text-3xl font-bold text-amber-800">My Recipe Collection</h1>
+  <div className="min-h-screen bg-[#FFF9EC] py-12 px-6">
+    <div className="max-w-6xl mx-auto bg-[#FFF3D4] p-8 rounded-3xl shadow-md">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+        <h1 className="text-4xl font-bold text-amber-800">My Recipe Collection</h1>
         <button
           onClick={() => navigate('/add')}
-          className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
+          className="bg-orange-600 text-white px-5 py-2.5 rounded-xl shadow hover:bg-orange-700 transition"
         >
           + Add Recipe
         </button>
       </div>
 
-      <div className="mb-16 flex">
+      {/* Search Bar */}
+      <div className="flex flex-col md:flex-row items-center gap-3 mb-10">
         <input
           type="text"
           placeholder="Search recipes..."
-          className="search-box flex-grow mr-2"
+          className="flex-grow border border-orange-300 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button 
+        <button
           onClick={handleSearch}
-          className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
+          className="bg-orange-600 text-white px-5 py-2.5 rounded-xl hover:bg-orange-700 transition"
         >
           Search
         </button>
       </div>
 
+      {/* Recipe Cards */}
       {filteredRecipes.length === 0 ? (
-        <div className="text-center py-8 text-gray-600">
+        <div className="text-center py-16 text-gray-500 text-lg">
           No recipes found.
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap -mx-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {currentRecipes.map((recipe) => (
-              <div key={recipe._id} className="w-full sm:w-1/2 md:w-1/3 px-3 mb-6">
-                <RecipeCard recipe={recipe} />
-              </div>
+              <RecipeCard key={recipe._id} recipe={recipe} />
             ))}
           </div>
-          
+
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-16">
-              <div className="inline-flex space-x-3">
+            <div className="flex justify-center mt-12">
+              <div className="inline-flex space-x-2">
                 <button
                   onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 1 : 1)}
                   disabled={currentPage === 1}
-                  className={`px-4 py-2 rounded ${
-                    currentPage === 1 ? 'bg-gray-200 text-gray-500' : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
+                  className={`px-4 py-2 rounded-xl ${
+                    currentPage === 1
+                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                      : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
                   }`}
                 >
                   &laquo;
                 </button>
-                
                 {[...Array(totalPages)].map((_, index) => (
                   <button
                     key={index}
                     onClick={() => paginate(index + 1)}
-                    className={`px-4 py-2 rounded ${
+                    className={`px-4 py-2 rounded-xl font-medium ${
                       currentPage === index + 1
                         ? 'bg-orange-600 text-white'
                         : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
@@ -112,12 +114,15 @@ const HomePage = () => {
                     {index + 1}
                   </button>
                 ))}
-                
                 <button
-                  onClick={() => setCurrentPage(currentPage < totalPages ? currentPage + 1 : totalPages)}
+                  onClick={() =>
+                    setCurrentPage(currentPage < totalPages ? currentPage + 1 : totalPages)
+                  }
                   disabled={currentPage === totalPages}
-                  className={`px-4 py-2 rounded ${
-                    currentPage === totalPages ? 'bg-gray-200 text-gray-500' : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
+                  className={`px-4 py-2 rounded-xl ${
+                    currentPage === totalPages
+                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                      : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
                   }`}
                 >
                   &raquo;
@@ -128,7 +133,8 @@ const HomePage = () => {
         </>
       )}
     </div>
-  );
+  </div>
+);
 };
 
 export default HomePage;
