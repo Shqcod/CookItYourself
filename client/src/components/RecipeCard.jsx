@@ -4,21 +4,28 @@ import { useNavigate } from 'react-router-dom';
 const RecipeCard = ({ recipe }) => {
   const navigate = useNavigate();
 
+  // Truncate ingredients list to show only first few
+  const truncatedIngredients = recipe.ingredients.slice(0, 3).join(', ');
+  const hasMoreIngredients = recipe.ingredients.length > 3;
+
   return (
-    <div className="border rounded p-4 shadow bg-white">
-      <h2 className="text-lg font-semibold">{recipe.name}</h2>
-      <p className="text-sm text-gray-600">
-        {recipe.ingredients.length} ingredients • {recipe.steps.length} steps
-      </p>
-      <p className="text-sm mt-2 text-gray-700 line-clamp-2">
-        Ingredients: {recipe.ingredients.join(', ')}
-      </p>
-      <button
-        onClick={() => navigate(`/recipe/${recipe._id}`)}
-        className="mt-4 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
-      >
-        View Recipe
-      </button>
+    <div className="resep-card h-full bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="p-5">
+        <h3 className="recipe-name text-xl font-semibold mb-2">{recipe.name}</h3>
+        <p className="text-sm text-amber-800 mb-2">
+          {recipe.ingredients.length} ingredients • {recipe.steps.length} steps
+        </p>
+        <p className="mb-4 text-gray-700">
+          Ingredients: {truncatedIngredients}
+          {hasMoreIngredients ? '...' : ''}
+        </p>
+        <button
+          onClick={() => navigate(`/recipe/${recipe._id}`)}
+          className="w-full bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
+        >
+          View Recipe
+        </button>
+      </div>
     </div>
   );
 };
