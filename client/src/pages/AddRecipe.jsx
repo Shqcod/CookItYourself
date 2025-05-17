@@ -10,27 +10,16 @@ const AddRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validasi input
     if (!name.trim()) {
       alert('Recipe name is required.');
       return;
     }
 
-    const ingredients = ingredientsText
-      .split('\n')
-      .map(i => i.trim())
-      .filter(i => i);
-    if (ingredients.length === 0) {
-      alert('Please add at least one valid ingredient.');
-      return;
-    }
+    const ingredients = ingredientsText.split('\n').map(i => i.trim()).filter(i => i);
+    const steps = stepsText.split('\n').map(s => s.trim()).filter(s => s);
 
-    const steps = stepsText
-      .split('\n')
-      .map(s => s.trim())
-      .filter(s => s);
-    if (steps.length === 0) {
-      alert('Please add at least one valid step.');
+    if (ingredients.length === 0 || steps.length === 0) {
+      alert('Please add at least one valid ingredient and step.');
       return;
     }
 
@@ -43,60 +32,65 @@ const AddRecipe = () => {
         body: JSON.stringify(newRecipe),
       });
 
-      if (!res.ok) {
-        throw new Error('Failed to save recipe');
-      }
-
+      if (!res.ok) throw new Error('Failed to save recipe');
       navigate('/');
     } catch (error) {
-      console.error('Error saving recipe:', error);
+      console.error('Error:', error);
       alert('There was an error saving the recipe.');
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-6">Add New Recipe</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-2xl mx-auto mt-12 bg-gradient-to-br from-orange-50 to-white p-10 rounded-2xl shadow-xl">
+      <h2 className="text-4xl font-extrabold text-orange-700 mb-8 text-center">🍰 Add New Recipe</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Name */}
         <div>
-          <label className="block font-semibold mb-1">Recipe Name:</label>
+          <label className="block text-lg font-semibold text-gray-700 mb-1">Recipe Name</label>
           <input
             type="text"
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 px-4 py-3 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Chocolate Cake"
           />
         </div>
+
+        {/* Ingredients */}
         <div>
-          <label className="block font-semibold mb-1">Ingredients (one per line):</label>
+          <label className="block text-lg font-semibold text-gray-700 mb-1">Ingredients (one per line)</label>
           <textarea
-            className="w-full border px-3 py-2 rounded h-28"
+            className="w-full border border-gray-300 px-4 py-3 rounded-xl h-32 shadow-sm resize-none focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
             value={ingredientsText}
             onChange={(e) => setIngredientsText(e.target.value)}
             placeholder="e.g. 2 cups flour"
           />
         </div>
+
+        {/* Steps */}
         <div>
-          <label className="block font-semibold mb-1">Steps (one per line):</label>
+          <label className="block text-lg font-semibold text-gray-700 mb-1">Steps (one per line)</label>
           <textarea
-            className="w-full border px-3 py-2 rounded h-28"
+            className="w-full border border-gray-300 px-4 py-3 rounded-xl h-32 shadow-sm resize-none focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
             value={stepsText}
             onChange={(e) => setStepsText(e.target.value)}
             placeholder="e.g. Preheat the oven to 350°F"
           />
         </div>
-        <div className="flex gap-4">
+
+        {/* Actions */}
+        <div className="flex justify-end space-x-4">
           <button
             type="submit"
-            className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
+            className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-2 rounded-xl shadow-md transition-transform transform hover:-translate-y-0.5"
           >
             Save Recipe
           </button>
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
+            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-xl shadow-sm transition-colors"
           >
             Cancel
           </button>
