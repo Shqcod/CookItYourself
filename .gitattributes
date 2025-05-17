@@ -1,0 +1,19 @@
+# Set default behavior for all text files to use LF line endings in the repository
+* text=auto eol=lf
+
+# Ensure consistent LF endings for JavaScript and JSX files in the client
+client/**/*.js text eol=lf
+client/**/*.jsx text eol=lf
+
+# Ensure consistent LF endings for JSON files in both client and server
+client/**/*.json text eol=lf
+server/**/*.json text eol=lf
+
+# Ensure consistent LF endings for JavaScript files in the server
+server/**/*.js text eol=lf
+
+# Handle configuration files with LF
+client/**/*.config text eol=lf
+server/**/*.config text eol=lf
+*.env text eol=lf
+.gitignore text eol=lf

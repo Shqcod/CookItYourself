@@ -1,8 +1,6 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('./background.png') no-repeat center center fixed;
-  background-size: cover;
   color: #5A3B00;
 }
 
