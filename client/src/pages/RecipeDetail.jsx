@@ -37,47 +37,50 @@ const RecipeDetail = () => {
   if (!recipe) return <div className="text-center mt-10">Loading...</div>;
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h2 className="text-3xl font-bold mb-4">{recipe.name}</h2>
+  <div className="min-h-screen bg-yellow-100 flex items-center justify-center p-6 font-sans">
+    <div className="bg-amber-50 max-w-2xl w-full rounded-3xl shadow-lg p-8 border border-yellow-300">
+      <h2 className="text-4xl font-extrabold text-orange-500 mb-8 text-center uppercase tracking-wide">
+        {recipe.name}
+      </h2>
 
-      <h3 className="text-xl font-semibold mb-2">Ingredients:</h3>
-      <ul className="list-disc list-inside mb-4">
-        {recipe.ingredients.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <div className="mb-6">
+        <h3 className="text-lg font-bold text-gray-700 mb-1">Bahan-bahan</h3>
+        <div className="bg-white border border-yellow-200 rounded-md p-4 text-sm text-gray-800 font-mono whitespace-pre-wrap">
+          {recipe.ingredients.map((item, index) => `- ${item}\n`)}
+        </div>
+      </div>
 
-      <h3 className="text-xl font-semibold mb-2">Steps:</h3>
-      <ol className="list-decimal list-inside mb-6">
-        {recipe.steps.map((step, index) => (
-          <li key={index}>{step}</li>
-        ))}
-      </ol>
+      <div className="mb-8">
+        <h3 className="text-lg font-bold text-gray-700 mb-1">Langkah-langkah</h3>
+        <div className="bg-white border border-yellow-200 rounded-md p-4 text-sm text-gray-800 font-mono whitespace-pre-wrap">
+          {recipe.steps.map((step, index) => `${index + 1}. ${step}\n`)}
+        </div>
+      </div>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex justify-center gap-4 mt-4">
         <button
           onClick={() => navigate('/')}
-          className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
+          className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-6 py-2 rounded-full transition duration-200"
         >
           Back to List
         </button>
-
         <button
           onClick={() => navigate(`/edit/${recipe._id}`)}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-gray-300 hover:bg-gray-400 text-black font-semibold px-6 py-2 rounded-full transition duration-200"
         >
           Edit
         </button>
-
         <button
           onClick={handleDelete}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          className="bg-red-400 hover:bg-red-500 text-white font-semibold px-6 py-2 rounded-full transition duration-200"
         >
           Delete
         </button>
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default RecipeDetail;
